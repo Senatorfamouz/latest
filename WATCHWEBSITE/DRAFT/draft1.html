@@ -3,31 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Gmail Redirect Box</title>
     <style>
-        body{
-            width: 100vw;
-            height: 100vh;
+        body {
             display: flex;
             justify-content: center;
             align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f5f5f5;
+            font-family: Arial, sans-serif;
         }
-        div{
-            margin-bottom: 1px;
-            /* transition: all 0.4s ease-in-out; */
-            transition-behavior: smooth;
+        .gmail-box {
+            width: 300px;
+            padding: 25px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
         }
-        div:hover{ 
+        .gmail-box h3 {
+            margin: 0 0 15px 0;
+            color: #202124;
+        }
+        .gmail-box input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #dadce0;
+            border-radius: 5px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+        .gmail-box input:focus {
+            outline: none;
+            border-color: #4285F4;
+            box-shadow: 0 0 0 2px rgba(66, 133, 244, 0.2);
+        }
+        .gmail-box button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4285F4;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: 500;
             cursor: pointer;
-            border-bottom: 2px solid red;
-            
+            transition: background-color 0.3s;
         }
-        
+        .gmail-box button:hover {
+            background-color: #3367D6;
+        }
     </style>
 </head>
 <body>
-    <div>
-        <p>Hover on me</p>
+    <div class="gmail-box">
+        <h3>Open Your Gmail</h3>
+        <input type="text" id="gmail-input" placeholder="example@gmail.com">
+        <button onclick="redirectToGmail()">Go to Gmail</button>
     </div>
+
+    <script>
+        function redirectToGmail() {
+            const email = document.getElementById('gmail-input').value.trim();
+            
+            if (!email) {
+                alert("Please enter your Gmail address!");
+                return;
+            }
+
+            // Extract the username (before @gmail.com)
+            const username = email.split('@')[0];
+            
+            // Redirect to Gmail with the username
+            window.location.href = `https://mail.google.com/mail/u/?authuser=${username}`;
+        }
+    </script>
 </body>
 </html>

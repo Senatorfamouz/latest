@@ -284,7 +284,7 @@
     margin-bottom: 5px;
   }
 
-  .filter-option input[type="radio"],
+.filter-option input[type="radio"],
   .filter-option input[type="checkbox"] {
     margin-right: 10px;
     /* background-color: #474545; */
@@ -495,4 +495,12 @@ a {
     margin: 0 5px;
 }
 
+.search-container{
+    width: 100%;
+   
+}
 
+.search-container input[type="text"] {
+    width: 95%;
+border: none;
+}
